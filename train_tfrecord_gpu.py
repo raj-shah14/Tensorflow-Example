@@ -4,6 +4,8 @@ import cv2
 import sys
 import numpy as np
 
+num_gpus = 7
+Epochs = 101
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 #sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
@@ -114,7 +116,8 @@ def model_fn(features, labels, mode, params):
 # Check Cuda version using nvcc --version
 # sudo apt install libnccl2=2.4.2-1+cuda9.0 libnccl-dev=2.4.2-1+cuda9.0
 
-strategy = tf.contrib.distribute.MirroredStrategy(num_gpus=7)
+## Parallelizing training over multiple GPUs
+strategy = tf.contrib.distribute.MirroredStrategy(num_gpus=num_gpus)
 config = tf.estimator.RunConfig(train_distribute=strategy, eval_distribute=strategy)
 
 model=tf.estimator.Estimator(model_fn=model_fn,
@@ -123,7 +126,7 @@ model=tf.estimator.Estimator(model_fn=model_fn,
                                config=config)
 
 count=1
-while (count < 101):
+while (count < Epochs):
     model.train(input_fn=train_input_fn, steps=1000)
     result = model.evaluate(input_fn=val_input_fn)
     print(result,count)
