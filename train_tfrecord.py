@@ -6,6 +6,8 @@ import numpy as np
 
 sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 sess.run(tf.global_variables_initializer())
+Epochs = 100
+
 
 def _int64_feature(value):
     return tf.train.Feature(int64_list=tf.train.Int64List(value=value))
@@ -112,7 +114,7 @@ with tf.device('/cpu:0'):
                                model_dir="./output/")
 
     count = 0
-    while (count < 100):
+    while (count < Epochs):
         model.train(input_fn=train_input_fn, steps=1000)
         result = model.evaluate(input_fn=val_input_fn)
         print(result)
