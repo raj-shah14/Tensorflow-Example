@@ -19,12 +19,12 @@ It will generate `train.record`, `val.record`, `test.record` files
 ```
 python train_tfrecord.py
 ```
-If you are training on a CPU use `train_tfrecord.py` script. It will save the model in `output` directory. You can set number of Epochs by changing to the appropriate value.
+If you are training on a CPU use `train_tfrecord.py` script. It will save the model in `output` directory. You can set number of Epochs by changing `Epochs` to the appropriate value.
 
 ```
 python train_tfrecord_gpy.py
 ```
-If you are training on a GPU use `train_tfrecord_gpu.py` script. The model will be saved in `output_gpu` directory. You can set the number of GPU to train on by putting correct value in `num_gpus` parameter. You can set number of Epochs by changing to the appropriate value.
+If you are training on a GPU use `train_tfrecord_gpu.py` script. The model will be saved in `output_gpu` directory. You can set the number of GPU to train on by putting correct value in `num_gpus` parameter. You can set number of Epochs by changing `Epochs` to the appropriate value.
 
 ## Create a Frozen Graph Protobuf
 ```
