@@ -1,5 +1,5 @@
 # Tensorflow-Example
-Creating data using Tf record, passing it the model and inferencing
+Downloading Data and generating Tf record, passing it the model and inferencing
 
 ## Download the Dataset
 Get [Dataset](https://www.microsoft.com/en-us/download/details.aspx?id=54765) and put the picture in a structure where you have
